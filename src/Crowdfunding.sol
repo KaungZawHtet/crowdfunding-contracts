@@ -58,7 +58,7 @@ contract Crowdfunding{
 
     modifier notPaused()
     {
-        require(IsPaused == true, "Contract is paused");
+        require(IsPaused == false, "Contract is paused");
         _;
     }
 
@@ -169,8 +169,8 @@ contract Crowdfunding{
         return tiers;
     }
 
-     function togglePaused(bool _paused)   public OnlyOwner {
-        IsPaused = !_paused;
+     function togglePaused()   public OnlyOwner {
+        IsPaused = !IsPaused;
     }
 
     function getCampaignState () view public returns (CompaignState)
